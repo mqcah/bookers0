@@ -17,46 +17,39 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  color: #222;
+.jumbotron {
+  background-color: white;
 }
 
-body {
-  padding-top: 70px;
+.header {
+  background-color: black;
+  height: 60px;
+  .container {
+    .nav {
+      h3 {
+        color: white;
+        margin: 0;
+      }
+    }
+  }
 }
 
-/* ナビゲーションバー */
-.navbar-custom .navbar-text {
-  color: #fff;
-  font-size: 20px;
-}
-.navbar-custom .navbar-nav {
-  font-size: 13px;
-}
-
-/* リンクの背景色を変更 */
-a {
-  color: #666;
-  display: inline-block;
-}
-
-a:hover {
-  background-color: #000;
-  color: #337ab7;
+.nav {
+  li {
+    margin: 20px 30px;
+    a {
+      color: rgb(155, 155, 155);
+    }
+    .row {
+     .glyphicon {
+        color: rgb(155, 155, 155);
+      }
+    }
+  }
 }
 
-/* エラーメッセージ */
-.error_massage_color {
-  color: red;
-}
-.error_container {
-  padding-left: 50px;
-}
-
-/* device/password/new */
-.pass-btn {
-  margin: 10px 0;
+@media screen and (max-width: 768px) {
+  .header {
+    height: 228.5px;
+  }
 }

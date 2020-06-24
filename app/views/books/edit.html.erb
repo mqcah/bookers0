@@ -1,26 +1,31 @@
-<% if @book.errors.any? %>
-  <div class="error_massage_color">
-    <h3>
-      <%= @book.errors.count %> errors prohibited this obj from being saved:
-    </h3>
-    <% @book.errors.full_messages.each do |message| %>
-      <div class="error_container">
-        <li class="error_massage_color"><%= message %></li>
-      </div>
-    <% end %>
-  </div>
-<% end %>
 
-<h1>Editing Book</h1>
+<h2>Editing Book</h2>
 
-  <%= form_for(@book) do |f| %>
-  <p><strong>Title</strong>
-    <%= f.text_field :title, class: "book_title f_book" %></p>
-  <p><strong>Opinion</strong>
-    <%= f.text_area :option, class: "book_body f_book" %></p>
-  <p><%= f.submit "Update Book", class: "btn btn-primary btn-block" %></p>
+ <%= form_for(@book) do |f| %>
+  <% if @book.errors.any? %>
+    <h3><%= @book.errors.count %>errors prohibited this book from being saved:</h3>
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
   <% end %>
+  <p>Title</p>
+  <%= f.text_field :title %>
+  <%# title情報が反映されている入力フォームを下に作成 %>
 
-<%= link_to "Show", book_path, class: "book_#{@book.id}" %>
- | 
-<%= link_to "Back", books_path, class: "back" %>
+  <p>Opinion</p>
+  <%= f.text_area :body %>
+  <%# body情報が反映されている入力フォームを下に作成 %>
+
+  <%= f.submit 'Update Book' %>
+<% end %>
+<span>
+  <p>
+    <span class="block"><%= link_to "Show", book_path(@book) %></span>
+    <%# @booksはコントローラから送られてきた情報が格納されている！ %>
+    |
+    <span class="block"><%= link_to "Back", books_path %></span>
+    <%# link_toの記述の仕方はいくつかある！ → 分からなくなったらlink_toで検索！ %>
+  </p>
+</div>

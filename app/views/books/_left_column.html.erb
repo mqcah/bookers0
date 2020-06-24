@@ -1,31 +1,46 @@
-    <!-- ユーザー紹介 -->
-    <h2>User info</h2>
-      <!-- 後でやる　user imagge -->
-      <%= attachment_image_tag user, :profile_image_id, :fill, 100, 100, fallback: "no_image.jpg" %>
-    <table class="table">
-      <tr>
-        <td><strong>name</strong></td>
-        <td><%= user.name %></td>
-      </tr>
-      <tr>
-        <td><strong>introduction</strong></td>
-        <td><%= user.info %></td>
-      </tr>
-    </table>
-    <div>
-      <%= link_to edit_user_path(current_user.id), class: "edit_user_#{user.id}, btn btn-default btn-block" do %>
-        <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
-      <% end %>
+<h2>User info</h2>
+
+<%# user.each do |u| %>
+  <p><%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size: '100x100', class: "img-circle pull-left profile-img"%></p>
+  <table class="table">
+    <tr>
+      <th>name</th>
+      <td><%= user.name %></td>
+    </tr>
+    <tr>
+      <th>introduction</th>
+      <td><%= user.introduction %></td>
+    </tr>
+  </table>
+<%# end %>
+
+<!-- 編集へ -->
+<div class="row">
+  <%= link_to edit_user_path(current_user.id), class: 'col-xs-12 btn btn-default' do %>
+    <i class="glyphicon glyphicon-wrench"></i>
+  <% end %>
+</div>
+<!-- 編集へ -->
+
+<h2>New book</h2>
+  <%= form_for(book) do |f| %>
+
+
+    <div class="row">
+      <p>Title</p>
+      <%= f.text_field :title, class: 'col-xs-12' %>
+      <%# 入力フォームを作成 %>
     </div>
 
-    <!-- 本の一覧 -->
-    <div>
-      <h2>New book</h2>
-      <%= form_for(book) do |f| %>
-      <p><strong>Title</strong>
-      <%= f.text_field :title, class: "book_title f_book" %></p>
-      <p><strong>Opinion</strong>
-        <%= f.text_area :option, class: "book_body f_book" %></p>
-      <p><%= f.submit "Create Book", class: "btn btn-primary btn-block" %></p>
-      <% end %>
+    <div class="row mb-5">
+      <p>Opinion</p>
+      <%= f.text_area :body, class: 'col-xs-12' %>
+      <%# 入力フォームを作成 %>
     </div>
+
+    <div class="row">
+      <%= f.submit 'Create Book', class: 'col-xs-12 btn btn-primary' %>
+      <%# クリエイトをクリックされたらshowページに移行 %>
+    </div>
+
+  <% end %>  
